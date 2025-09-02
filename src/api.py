@@ -18,6 +18,10 @@ model = DistilBertForSequenceClassification.from_pretrained(MODEL_PATH)
 class PIIRequest(RootModel[Dict[str, List[str]]]):
     pass
 
+@app.get("/")
+def read_root():
+    return {"status": "ok"}
+
 @app.post("/detect-pii")
 def detect_pii(request: PIIRequest) -> Dict[str, List[dict]]:
     data = request.root
