@@ -11,7 +11,7 @@ import os
 
 app = FastAPI()
 
-MODEL_PATH = "pii_bert"
+MODEL_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pii_bert")
 tokenizer = DistilBertTokenizerFast.from_pretrained(MODEL_PATH)
 model = DistilBertForSequenceClassification.from_pretrained(MODEL_PATH)
 
